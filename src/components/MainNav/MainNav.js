@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const LINKS = [
     {link: '/works', label: 'Works'},
+    {link: '/exhibitions', label: 'Exhibitions'},
     {link: '/contact', label: 'Contact'},
     {link: '/about', label: 'About'},
     

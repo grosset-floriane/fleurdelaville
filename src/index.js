@@ -5,6 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Single from './component-pages/Single';
+import Page from './component-pages/Page';
+import Archive from './component-pages/Archive';
 import HomePage from './component-pages/HomePage';
 import ErrorPage from './component-pages/ErrorPage';
 
@@ -15,19 +17,32 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/works",
+    path: "/contact",
+    element: <Page />,
+  },
+  {
+    path: "/about",
+    element: <Page />,
+  },
+  {
+    path: "/works/:slug",
     element: <Single />,
-    children: [
-      {
-        path: ":slug",
-        element: <Single />,
-      },
-    ],
+  },
+  {
+    path: "/works",
+    element: <Archive />,
   },
   {
     path: "/exhibitions/:slug",
     element: <Single />,
-  }
+
+  },
+  {
+    path: "/exhibitions",
+    element: <Archive />,
+
+  },
+  
 ]);
 
 ReactDOM.render(
