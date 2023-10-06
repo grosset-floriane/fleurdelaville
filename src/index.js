@@ -9,6 +9,8 @@ import Page from './component-pages/Page';
 import Archive from './component-pages/Archive';
 import HomePage from './component-pages/HomePage';
 import ErrorPage from './component-pages/ErrorPage';
+import { Provider } from './context/storeContext';
+
 
 const router = createBrowserRouter([
   {
@@ -46,7 +48,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.render(
-  <RouterProvider router={router} />,
+  <Provider>
+    <RouterProvider router={router} />
+  </Provider>,
   document.getElementById('root')
 );
 
