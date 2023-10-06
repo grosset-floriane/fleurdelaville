@@ -15,8 +15,14 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/artworks/:slug",
+    path: "/works",
     element: <Single />,
+    children: [
+      {
+        path: ":slug",
+        element: <Single />,
+      },
+    ],
   },
   {
     path: "/exhibitions/:slug",
