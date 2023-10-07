@@ -1,40 +1,40 @@
 {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaVersion": 2022,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "plugins": ["@typescript-eslint"],
-    "extends": [
-      "eslint:recommended",
-      "eslint-config-prettier",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended"
-    ],
-    "rules": {
-      "strict": ["error", "never"]
-    },
-    "env": {
-      "browser": true,
-      "jest": true,
-    },
-    "overrides": [
-      {
-        "files": "**/*.+(ts|tsx)",
-        "parser": "@typescript-eslint/parser",
-        "parserOptions": {
-          "projecr": "./tsconfig.json"
-        },
-        "plugins": ["@typescript-eslint/eslint-plugin"], 
-        "extends": [
-          "plugin:@typescript-eslint/eslint-recommended",
-          "plugin:@typescript-eslint/recommended"
-        ]
-      }
-    ]
-  }
-  
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "eslint-config-prettier",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "strict": ["error", "never"],
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+  },
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "overrides": [
+    {
+      "files": "**/*.+(ts|tsx)",
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "projecr": "./tsconfig.json"
+      },
+      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ]
+    }
+  ]
+}

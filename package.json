@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@devloco/react-scripts-wptheme": "3.4.1-wp.1",
+    "@emotion/react": "^11.11.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -40,9 +41,9 @@
   "homepage": "/wp-content/themes/fleurdelaville-react2",
   "browserLaunchTo": "http://fleurdelaville.test",
   "devDependencies": {
-    "eslint": "^6.6.0",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
-		"@typescript-eslint/parser": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.0.0",
     "prettier": "3.0.3",
     "typescript": "^3.2.1"
