@@ -1,16 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { POST_TYPES, PostTypesSlugs } from './constants'
-
-interface Post {
-  title: { rendered: string }
-  content: { rendered: HTMLCollection }
-  slug: string
-  link: string
-  _links: {
-    ['wp:featuredmedia']: { href: string }[]
-  }
-}
+import { Post } from 'types/post'
 
 export const storeContext = React.createContext<null | Post[]>(null)
 export const Consumer = storeContext.Consumer
