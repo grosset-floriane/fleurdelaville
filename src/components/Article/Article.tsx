@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { storeContext } from '../../context/storeContext'
 
 const Article = () => {
-  const { posts } = useContext(storeContext)
+  const posts = useContext(storeContext)
 
   if (!posts) return
 

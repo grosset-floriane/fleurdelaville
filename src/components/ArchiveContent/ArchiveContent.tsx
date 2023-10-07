@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import FeaturedImage from './FeaturedImage'
 
 const ArchiveContent = () => {
-  const { posts } = useContext(storeContext)
+  const posts = useContext(storeContext)
   if (!posts) return null
 
   return (
