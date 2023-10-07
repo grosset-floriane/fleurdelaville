@@ -1,56 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Single from './component-pages/Single';
-import Page from './component-pages/Page';
-import Archive from './component-pages/Archive';
-import HomePage from './component-pages/HomePage';
-import ErrorPage from './component-pages/ErrorPage';
-import { Provider } from './context/storeContext';
-
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Single from './component-pages/Single'
+import Page from './component-pages/Page'
+import Archive from './component-pages/Archive'
+import HomePage from './component-pages/HomePage'
+import ErrorPage from './component-pages/ErrorPage'
+import { Provider } from './context/storeContext'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/contact",
+    path: '/contact',
     element: <Page />,
   },
   {
-    path: "/about",
+    path: '/about',
     element: <Page />,
   },
   {
-    path: "/works/:slug",
+    path: '/works/:slug',
     element: <Single />,
   },
   {
-    path: "/works",
+    path: '/works',
     element: <Archive />,
   },
   {
-    path: "/exhibitions/:slug",
+    path: '/exhibitions/:slug',
     element: <Single />,
-
   },
   {
-    path: "/exhibitions",
+    path: '/exhibitions',
     element: <Archive />,
-
   },
-  
-]);
+])
 
 ReactDOM.render(
   <Provider>
     <RouterProvider router={router} />
   </Provider>,
-  document.getElementById('root')
-);
-
+  document.getElementById('root'),
+)
