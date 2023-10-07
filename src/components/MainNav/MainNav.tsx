@@ -1,5 +1,8 @@
+import styled from '@emotion/styled'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { SPACING } from 'context/stylesConstants'
+import { LinkState } from 'types/links'
 
 const LINKS = [
   { link: '/works', label: 'Works' },
@@ -9,14 +12,35 @@ const LINKS = [
 ]
 
 const MainNav = () => {
+  const NavList = styled.ul`
+    display: flex;
+    padding: 0;
+    gap: ${SPACING * 2}rem;
+
+    a {
+      font-size: 1.4rem;
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  `
   return (
-    <ul>
-      {LINKS.map(({ link, label }) => (
-        <li key={link}>
-          <Link to={link}>{label}</Link>
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <NavList>
+        {LINKS.map(({ link, label }) => (
+          <li key={link}>
+            <NavLink
+              to={link}
+              className={({ isActive, isPending }: LinkState) =>
+                isPending ? 'pending' : isActive ? 'active' : ''
+              }
+            >
+              {label}
+            </NavLink>
+          </li>
+        ))}
+      </NavList>
+    </nav>
   )
 }
 
