@@ -18,6 +18,12 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
+
+      <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Reenie+Beanie&display=swap"
+    rel="stylesheet">
     <!--
         If you're reading this from "view source" in your browser, it might not make sense as
         these tokens have already been evaluated and replaced, even in this remark blurb.
