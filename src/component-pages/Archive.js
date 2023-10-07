@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from '../components/Header/Header';
-import Loop from '../context/Loop';
+import ArchiveContent from '../components/ArchiveContent/ArchiveContent';
 import { Provider } from '../context/storeContext';
 import { useLocation } from 'react-router-dom';
+import { POST_TYPES } from '../context/constants';
 
 const Archive = () => {
     const {pathname} = useLocation()
@@ -12,8 +13,8 @@ const Archive = () => {
         <Provider postType={postType} slug={postType}>
         <Header />
         <main className="Archive">
-            this is the archive page 
-            <Loop/>
+            <h1>{postType === POST_TYPES.EXHIBITIONS.slug ? POST_TYPES.EXHIBITIONS.title : POST_TYPES.WORKS.title}</h1>
+            <ArchiveContent/>
         </main>
         </Provider>
     )

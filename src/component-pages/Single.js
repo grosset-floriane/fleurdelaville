@@ -1,8 +1,8 @@
 import React from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import { Provider } from '../context/storeContext';
-import Loop from '../context/Loop';
+import Article from '../components/Article/Article';
 
 
 const Single = () => {
@@ -13,8 +13,7 @@ const Single = () => {
         <Provider slug={slug} postType={postType}>
         <Header />
         <main className="Post">
-            this is the page component
-            <Loop />
+            <Article />
         </main>
         </Provider>
     )
