@@ -1,15 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import { Provider } from '../context/storeContext';
 import Loop from '../context/Loop';
 
 
 const Single = () => {
-    const {slug} = useParams()
+    const {pathname} = useLocation()
+    const [, postType, slug] = pathname.split('/')
 
     return (
-        <Provider router={slug}>
+        <Provider slug={slug} postType={postType}>
         <Header />
         <main className="Post">
             this is the page component

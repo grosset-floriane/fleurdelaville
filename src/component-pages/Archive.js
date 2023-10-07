@@ -6,9 +6,10 @@ import { useLocation } from 'react-router-dom';
 
 const Archive = () => {
     const {pathname} = useLocation()
+    const [, postType] = pathname.split('/')
 
     return (
-        <Provider router={pathname}>
+        <Provider postType={postType} slug={postType}>
         <Header />
         <main className="Archive">
             this is the archive page 

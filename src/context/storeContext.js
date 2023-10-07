@@ -1,14 +1,53 @@
 import React, { useEffect, useState } from "react";
-export const storeContext = React.createContext();
+import axios from "axios";
 
+export const storeContext = React.createContext();
 export const Consumer = storeContext.Consumer;
 
-export const Provider = ({children, router}) => {
+const BASE_URL = '/wp-json/wp/v2/'
+
+const setURL = (postType, slug) => {
+    switch(postType) {
+        case 'exhibitions':
+        case 'works':
+            if(slug === postType) return slug
+            return `${postType}?slug=${slug}`
+        case 'pages':
+            return `pages?slug=${slug}`
+        default:
+            return 'pages?=home'
+    }
+}
+
+export const Provider = ({children, slug, postType}) => {
     const [posts, setPosts] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    console.log(slug)
+    const [url, setUrl] = useState('')
+    console.log(posts)
+
+    // useEffect(() => {
+    //     console.log('set url')
+    //     setUrl(() => {
+    //         switch(postType) {
+    //             case 'exhibitions':
+    //             case 'works':
+    //                 if(slug === postType) return slug
+    //                 return `${postType}?slug=${slug}`
+    //             case 'pages':
+    //                 return `pages?slug=${slug}`
+    //             default:
+    //                 return 'pages?=home'
+    //         }
+    //     })
+    // }, [slug, postType])
+
     useEffect(() => {
-        setPosts(['title', 'title2'])
-        if(router) setPosts((prevState) => [...prevState, router])
-    }, [])
+        if(!isLoading && slug !== undefined) {
+                setIsLoading(true)
+                axios.get(`${BASE_URL}${setURL(postType, slug)}`).then((response) => setPosts(response.data)).finally(() => setIsLoading(false))
+        }
+    }, [postType, slug])
 
     return (
         <storeContext.Provider value={posts}>
