@@ -4,21 +4,40 @@ import ArchiveContent from '../components/ArchiveContent/ArchiveContent'
 import { Provider } from '../context/storeContext'
 import { useLocation } from 'react-router-dom'
 import { POST_TYPES } from '../context/constants'
+import { SPACING } from '../context/stylesConstants'
+import styled from '@emotion/styled'
+import SecondaryNav from 'components/SecondaryNav/SecondaryNav'
 
 const Archive = () => {
   const { pathname } = useLocation()
   const [, postType] = pathname.split('/')
+  const Title = styled.h1`
+    position: fixed;
+    top: 8.5rem;
+    left: ${SPACING * 2}rem;
+    font-size: 4rem;
+    font-weight: normal;
+    z-index: 999;
+    line-height: 0.75;
+  `
+
+  const Subtitle = styled.span`
+    font-size: 2.8rem;
+  `
 
   return (
     <Provider postType={postType} slug={postType}>
       <Header />
       <main className="Archive">
-        <h1>
+        <Title>
           {postType === POST_TYPES.EXHIBITIONS.slug
             ? POST_TYPES.EXHIBITIONS.title
             : POST_TYPES.WORKS.title}
-        </h1>
+          <br />
+          <Subtitle>All</Subtitle>
+        </Title>
         <ArchiveContent />
+        <SecondaryNav />
       </main>
     </Provider>
   )

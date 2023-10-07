@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import styled from '@emotion/styled'
 
 interface Props {
   url: string
@@ -18,7 +19,12 @@ const FeaturedImage = ({ url, alt }: Props) => {
 
   if (!image) return null
 
-  return <img alt={alt} src={image.source_url} />
+  const Image = styled.img`
+    object-fit: cover;
+    height: 100vh;
+  `
+
+  return <Image alt={alt} src={image.source_url} />
 }
 
 export default FeaturedImage
