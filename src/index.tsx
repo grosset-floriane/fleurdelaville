@@ -7,6 +7,7 @@ import Archive from './component-pages/Archive'
 import HomePage from './component-pages/HomePage'
 import ErrorPage from './component-pages/ErrorPage'
 import { Provider } from './context/storeContext'
+import './assets/index.css'
 
 const router = createBrowserRouter([
   {
