@@ -15,6 +15,7 @@ Important spec missing from blogpost/github
 - React v 17.0.2
 - React-dom v 17.0.1
 - React-router-dom works with v 6.16.0 if syntax adapted
+- Typescript must be of version: ^3.2.1
 
 ## Wordpress server
 
