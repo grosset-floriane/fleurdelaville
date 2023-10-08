@@ -37,11 +37,11 @@ const Article = () => {
     z-index: 9999;
   `
 
-  return posts.map(({ title, content, slug, _links }) => (
+  return posts.map(({ title, content, slug, _embedded }) => (
     <article key={slug}>
       <Figure>
         <FeaturedImage
-          url={_links['wp:featuredmedia'][0].href}
+          src={_embedded['wp:featuredmedia'][0].source_url}
           alt={title.rendered}
           isSingle
         />

@@ -56,13 +56,13 @@ const ArchiveContent = () => {
 
   return (
     <ArchiveList>
-      {filteredPosts.map(({ title, slug, _links, link: postLink }) => {
+      {filteredPosts.map(({ title, slug, _embedded, link: postLink }) => {
         return (
           <ListItem key={slug}>
             <ItemTitle className="target">{title.rendered}</ItemTitle>
             <Link to={postLink}>
               <FeaturedImage
-                url={_links['wp:featuredmedia'][0].href}
+                src={_embedded['wp:featuredmedia'][0].source_url}
                 alt={title.rendered}
               />
             </Link>

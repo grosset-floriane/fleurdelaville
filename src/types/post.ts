@@ -3,8 +3,8 @@ export interface Post {
   content: { rendered: HTMLCollection }
   slug: string
   link: string
-  _links: {
-    ['wp:featuredmedia']: { href: string }[]
+  _embedded: {
+    ['wp:featuredmedia']: { source_url: string }[]
   }
   ['work-types']: number[]
 }
