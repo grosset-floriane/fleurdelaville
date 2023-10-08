@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 
+// BackgroundCheck needs to be initialised every time a page is changes
+// This does not initialize as the page first load
+
 const backgroundCheck = window.BackgroundCheck
 
 const useBackgroundCheck = () => {
