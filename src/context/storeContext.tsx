@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { POST_TYPES, PostTypesSlugs } from './constants'
 import { Post } from 'types/post'
+import useBackgroundCheck from 'hooks/useBackgroundCheck'
 
 export const storeContext = React.createContext<null | Post[]>(null)
 export const Consumer = storeContext.Consumer
@@ -30,16 +31,24 @@ interface Props {
 export const Provider = ({ children, slug, postType }: Props) => {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const { setThumbnailsState, clearThumbnails, backgroundCheck } =
+    useBackgroundCheck()
 
   useEffect(() => {
     if (!isLoading && slug !== undefined && postType !== undefined) {
+      clearThumbnails()
       setIsLoading(true)
       axios
         .get(`${BASE_URL}${setURL(postType, slug)}`)
         .then((response) => setPosts(response.data))
-        .finally(() => setIsLoading(false))
+        .finally(() => {
+          setIsLoading(false)
+          backgroundCheck.refresh()
+          setThumbnailsState()
+        })
     }
-  }, [postType, slug, isLoading])
+    /// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [postType, slug])
 
   return <storeContext.Provider value={posts}>{children}</storeContext.Provider>
 }
