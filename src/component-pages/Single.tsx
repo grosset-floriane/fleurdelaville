@@ -1,8 +1,8 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from '../components/Header/Header'
-import { Provider } from '../context/storeContext'
 import Article from '../components/Article/Article'
+import { Provider } from 'context/storeContext'
 
 const Single = () => {
   const { pathname } = useLocation()

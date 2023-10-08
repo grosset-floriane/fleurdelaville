@@ -38,7 +38,7 @@ const Archive = () => {
           <Subtitle>All</Subtitle>
         </Title>
         <ArchiveContent />
-        <SecondaryNav />
+        {postType === POST_TYPES.WORKS.slug && <SecondaryNav />}
       </main>
     </Provider>
   )
