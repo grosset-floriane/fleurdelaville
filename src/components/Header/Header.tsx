@@ -1,7 +1,11 @@
 import React from 'react'
 import MainNav from '../MainNav/MainNav'
 import styled from '@emotion/styled'
-import { SPACING, TITLE_FONT } from 'context/stylesConstants'
+import {
+  SPACING,
+  TITLE_FONT,
+  STYLES_CHECK_BACKGROUND,
+} from 'context/stylesConstants'
 
 const Header = () => {
   const StyledHeader = styled.header`
@@ -10,6 +14,8 @@ const Header = () => {
     left: 0;
     padding: 0 ${SPACING * 2}rem;
     z-index: 999;
+
+    ${STYLES_CHECK_BACKGROUND}
   `
 
   const SiteTitle = styled.a`
@@ -19,7 +25,7 @@ const Header = () => {
   `
 
   return (
-    <StyledHeader>
+    <StyledHeader className="target">
       <SiteTitle href="/">Fleur Delaville</SiteTitle>
       <MainNav />
     </StyledHeader>

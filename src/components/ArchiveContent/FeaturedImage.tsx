@@ -24,7 +24,7 @@ const FeaturedImage = ({ url, alt }: Props) => {
     height: 100vh;
   `
 
-  return <Image alt={alt} src={image.source_url} />
+  return <Image alt={alt} src={image.source_url} className="thumbnails" />
 }
 
 export default FeaturedImage

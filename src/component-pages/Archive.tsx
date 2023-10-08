@@ -4,7 +4,7 @@ import ArchiveContent from '../components/ArchiveContent/ArchiveContent'
 import { Provider } from '../context/storeContext'
 import { useLocation } from 'react-router-dom'
 import { POST_TYPES } from '../context/constants'
-import { SPACING } from '../context/stylesConstants'
+import { SPACING, STYLES_CHECK_BACKGROUND } from '../context/stylesConstants'
 import styled from '@emotion/styled'
 import SecondaryNav from 'components/SecondaryNav/SecondaryNav'
 
@@ -19,6 +19,7 @@ const Archive = () => {
     font-weight: normal;
     z-index: 999;
     line-height: 0.75;
+    ${STYLES_CHECK_BACKGROUND}
   `
 
   const Subtitle = styled.span`
@@ -29,7 +30,7 @@ const Archive = () => {
     <Provider postType={postType} slug={postType}>
       <Header />
       <main className="Archive">
-        <Title>
+        <Title className="target">
           {postType === POST_TYPES.EXHIBITIONS.slug
             ? POST_TYPES.EXHIBITIONS.title
             : POST_TYPES.WORKS.title}

@@ -4,7 +4,7 @@ import { storeContext } from '../../context/storeContext'
 import { Link, useSearchParams } from 'react-router-dom'
 import FeaturedImage from './FeaturedImage'
 import styled from '@emotion/styled'
-import { TITLE_FONT } from 'context/stylesConstants'
+import { STYLES_CHECK_BACKGROUND, TITLE_FONT } from 'context/stylesConstants'
 import { Post } from 'types/post'
 
 const ArchiveContent = () => {
@@ -30,6 +30,7 @@ const ArchiveContent = () => {
     display: flex;
     -webkit-overflow-scrolling: touch;
     overflow-x: scroll;
+    background-color: #caecf8;
   `
 
   const ListItem = styled.li`
@@ -49,6 +50,8 @@ const ArchiveContent = () => {
     font-family: ${TITLE_FONT};
     font-size: 3rem;
     font-weight: normal;
+
+    ${STYLES_CHECK_BACKGROUND}
   `
 
   return (
@@ -56,7 +59,7 @@ const ArchiveContent = () => {
       {filteredPosts.map(({ title, slug, _links, link: postLink }) => {
         return (
           <ListItem key={slug}>
-            <ItemTitle>{title.rendered}</ItemTitle>
+            <ItemTitle className="target">{title.rendered}</ItemTitle>
             <Link to={postLink}>
               <FeaturedImage
                 url={_links['wp:featuredmedia'][0].href}
