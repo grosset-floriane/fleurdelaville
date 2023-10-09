@@ -20,6 +20,13 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
         margin-bottom: 0;
       }
     }
+
+    a {
+      text-decoration: underline;
+      &:hover {
+        color: #710505;
+      }
+    }
   `
 
   return (
