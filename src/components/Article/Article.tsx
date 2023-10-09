@@ -10,10 +10,14 @@ const Article = () => {
 
   if (!posts) return
   const Figure = styled.figure`
-    min-height: 75vh;
+    min-height: calc(75vh + 3.5rem);
+    display: flex;
+    align-items: end;
+    justify-content: end;
 
     img {
       position: absolute;
+      min-height: 75vh;
       top: 0;
       left: 0;
     }
@@ -23,18 +27,25 @@ const Article = () => {
     padding: ${SPACING * 2}rem;
     p {
       line-height: 1.5;
+      margin: ${SPACING * 1.5}rem 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   `
   const StickyTitle = styled.h1`
-    position: sticky;
-    top: 9rem;
-    right: 0;
-    text-align: center;
+    position: relative;
+    line-height: 1;
+    text-align: right;
     padding: 0 ${SPACING * 2}rem;
     font-size: 6rem;
     font-weight: normal;
-    color: white;
-    z-index: 9999;
+    z-index: 2;
   `
 
   return posts.map(({ title, content, slug, _embedded }) => (
