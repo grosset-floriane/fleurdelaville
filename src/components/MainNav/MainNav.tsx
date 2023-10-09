@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { SPACING } from 'context/stylesConstants'
+import { SPACING, STYLES_CHECK_BACKGROUND } from 'context/stylesConstants'
 import { LinkState } from 'types/links'
 
 const LINKS = [
@@ -17,6 +17,8 @@ const MainNav = () => {
     padding: 0;
     gap: ${SPACING * 2}rem;
 
+    ${STYLES_CHECK_BACKGROUND}
+
     a {
       font-size: 1.4rem;
       &.active {
@@ -26,7 +28,7 @@ const MainNav = () => {
   `
   return (
     <nav>
-      <NavList>
+      <NavList className="target">
         {LINKS.map(({ link, label }) => (
           <li key={link}>
             <NavLink

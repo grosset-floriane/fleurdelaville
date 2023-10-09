@@ -14,19 +14,19 @@ const Header = () => {
     left: 0;
     padding: 0 ${SPACING * 2}rem;
     z-index: 999;
-
-    ${STYLES_CHECK_BACKGROUND}
   `
 
   const SiteTitle = styled.a`
     font-family: ${TITLE_FONT};
-
     font-size: 4.5rem;
+    ${STYLES_CHECK_BACKGROUND}
   `
 
   return (
-    <StyledHeader className="target">
-      <SiteTitle href="/">Fleur Delaville</SiteTitle>
+    <StyledHeader>
+      <SiteTitle href="/" className="target">
+        Fleur Delaville
+      </SiteTitle>
       <MainNav />
     </StyledHeader>
   )

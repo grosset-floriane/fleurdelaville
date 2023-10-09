@@ -6,6 +6,7 @@ import FeaturedImage from './FeaturedImage'
 import styled from '@emotion/styled'
 import { STYLES_CHECK_BACKGROUND, TITLE_FONT } from 'context/stylesConstants'
 import { Post } from 'types/post'
+import { backgroundCheck } from 'hooks/useBackgroundCheck'
 
 const ArchiveContent = () => {
   const posts = useContext(storeContext)
@@ -19,6 +20,7 @@ const ArchiveContent = () => {
         ? posts.filter((item) => item['work-types'][0] === Number(workType))
         : posts
       setFilteredPosts(newFilteredPosts)
+      backgroundCheck.refresh()
     }
   }, [posts, workType])
 
