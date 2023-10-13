@@ -27,6 +27,16 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
         color: #710505;
       }
     }
+
+    .wp-block-gallery {
+      display: flex;
+      gap: ${SPACING}rem;
+      flex-direction: column;
+    }
+
+    img {
+      height: auto;
+    }
   `
 
   return (
