@@ -4,7 +4,11 @@ import ArchiveContent from '../components/ArchiveContent/ArchiveContent'
 import { Provider } from '../context/storeContext'
 import { useLocation } from 'react-router-dom'
 import { POST_TYPES } from '../context/constants'
-import { SPACING, STYLES_CHECK_BACKGROUND } from '../context/stylesConstants'
+import {
+  SPACING,
+  STYLES_CHECK_BACKGROUND,
+  mq,
+} from '../context/stylesConstants'
 import styled from '@emotion/styled'
 import SecondaryNav from 'components/SecondaryNav/SecondaryNav'
 
@@ -20,6 +24,12 @@ const Archive = () => {
     z-index: 999;
     line-height: 0.75;
     ${STYLES_CHECK_BACKGROUND}
+
+    ${mq.tablet} {
+      font-size: 7rem;
+      top: 15rem;
+      left: ${SPACING * 3}rem;
+    }
   `
 
   const Subtitle = styled.span`
@@ -37,7 +47,7 @@ const Archive = () => {
             ? POST_TYPES.EXHIBITIONS.title
             : POST_TYPES.WORKS.title}
           <br />
-          <Subtitle>All</Subtitle>
+          {isShowing && <Subtitle>All</Subtitle>}
         </Title>
         <ArchiveContent />
         {postType === POST_TYPES.WORKS.slug && isShowing && <SecondaryNav />}

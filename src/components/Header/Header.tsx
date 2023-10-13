@@ -5,6 +5,7 @@ import {
   SPACING,
   TITLE_FONT,
   STYLES_CHECK_BACKGROUND,
+  mq,
 } from 'context/stylesConstants'
 
 interface Props {
@@ -20,6 +21,12 @@ const Header: React.FC<Props> = ({ isHomePage }) => {
       ? `${SPACING * 3}rem ${SPACING * 4}rem`
       : `0 ${SPACING * 2}rem`};
     z-index: 999;
+
+    ${mq.tablet} {
+      padding: ${isHomePage
+        ? `${SPACING * 4}rem ${SPACING * 7}rem`
+        : `0 ${SPACING * 3}rem`};
+    }
   `
 
   const SiteTitle = styled.a`
@@ -28,6 +35,11 @@ const Header: React.FC<Props> = ({ isHomePage }) => {
     line-height: ${isHomePage ? '0.75' : 'initial'};
     ${isHomePage && `margin-bottom: ${SPACING}rem; display: block;`}
     ${STYLES_CHECK_BACKGROUND}
+
+    ${mq.tablet} {
+      font-size: ${isHomePage ? '15rem' : '8rem'};
+      ${isHomePage && `width: 40rem`}
+    }
   `
 
   return (
@@ -35,7 +47,7 @@ const Header: React.FC<Props> = ({ isHomePage }) => {
       <SiteTitle href="/" className="target">
         Fleur Delaville
       </SiteTitle>
-      <MainNav />
+      <MainNav isHomePage={isHomePage} />
     </StyledHeader>
   )
 }

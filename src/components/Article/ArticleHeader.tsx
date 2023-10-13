@@ -1,7 +1,7 @@
 import React from 'react'
 import FeaturedImage from 'components/ArchiveContent/FeaturedImage'
 import styled from '@emotion/styled'
-import { SPACING } from 'context/stylesConstants'
+import { SPACING, mq } from 'context/stylesConstants'
 
 interface Props {
   imageSrc: string
@@ -19,6 +19,11 @@ const ArticleHeader: React.FC<Props> = ({ imageSrc, title }) => {
     font-size: ${titleLength > 15 ? '4rem' : '6rem'};
     font-weight: normal;
     z-index: 2;
+
+    ${mq.tablet} {
+      font-size: ${titleLength > 15 ? '10rem' : '12rem'};
+      padding: 0 ${SPACING * 3}rem;
+    }
   `
   const Header = styled.header`
     min-height: calc(75vh + ${titleLength > 15 ? '2.7rem' : '3.5rem'});
@@ -32,6 +37,10 @@ const ArticleHeader: React.FC<Props> = ({ imageSrc, title }) => {
       width: 100%;
       top: 0;
       left: 0;
+    }
+
+    ${mq.tablet} {
+      min-height: calc(75vh + ${titleLength > 15 ? '6rem' : '5.5rem'});
     }
   `
 

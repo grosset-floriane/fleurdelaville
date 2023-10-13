@@ -4,7 +4,11 @@ import { storeContext } from '../../context/storeContext'
 import { Link, useSearchParams } from 'react-router-dom'
 import FeaturedImage from './FeaturedImage'
 import styled from '@emotion/styled'
-import { STYLES_CHECK_BACKGROUND, TITLE_FONT } from 'context/stylesConstants'
+import {
+  STYLES_CHECK_BACKGROUND,
+  TITLE_FONT,
+  mq,
+} from 'context/stylesConstants'
 import { Post } from 'types/post'
 import { backgroundCheck } from 'hooks/useBackgroundCheck'
 
@@ -54,6 +58,10 @@ const ArchiveContent = () => {
     font-weight: normal;
 
     ${STYLES_CHECK_BACKGROUND}
+
+    ${mq.tablet} {
+      font-size: 4.5rem;
+    }
   `
 
   return (
@@ -61,8 +69,8 @@ const ArchiveContent = () => {
       {filteredPosts.map(({ title, slug, _embedded, link: postLink }) => {
         return (
           <ListItem key={slug}>
-            <ItemTitle className="target">{title.rendered}</ItemTitle>
             <Link to={postLink}>
+              <ItemTitle className="target">{title.rendered}</ItemTitle>
               <FeaturedImage
                 src={_embedded['wp:featuredmedia'][0].source_url}
                 alt={title.rendered}

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { SPACING, STYLES_CHECK_BACKGROUND } from 'context/stylesConstants'
+import { SPACING, STYLES_CHECK_BACKGROUND, mq } from 'context/stylesConstants'
 import { LinkState } from 'types/links'
 
 const LINKS = [
@@ -11,11 +11,19 @@ const LINKS = [
   { link: '/about', label: 'About' },
 ]
 
-const MainNav = () => {
+interface Props {
+  isHomePage?: boolean
+}
+
+const MainNav: React.FC<Props> = ({ isHomePage }) => {
   const NavList = styled.ul`
     display: flex;
     padding: 0;
     gap: ${SPACING * 2}rem;
+
+    ${mq.tablet} {
+      ${isHomePage && 'justify-content: flex-end;'}
+    }
 
     ${STYLES_CHECK_BACKGROUND}
 
@@ -23,6 +31,10 @@ const MainNav = () => {
       font-size: 1.4rem;
       &.active {
         text-decoration: underline;
+      }
+
+      ${mq.tablet} {
+        font-size: 2rem;
       }
     }
   `

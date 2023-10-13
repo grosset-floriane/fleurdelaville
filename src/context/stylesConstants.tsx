@@ -9,3 +9,10 @@ export const STYLES_CHECK_BACKGROUND = `
   &.background--dark *, &.background--dark {
     color: #fff;
   }`
+
+const writeMq = (bp: number) => `@media (min-width: ${bp}px)`
+export const mq = {
+  tablet: writeMq(576),
+  desktop: writeMq(992),
+  largeDesktop: writeMq(1200),
+}
