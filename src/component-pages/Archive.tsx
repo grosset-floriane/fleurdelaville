@@ -26,6 +26,8 @@ const Archive = () => {
     font-size: 2.8rem;
   `
 
+  const isShowing = false
+
   return (
     <Provider postType={postType} slug={postType}>
       <Header />
@@ -38,7 +40,7 @@ const Archive = () => {
           <Subtitle>All</Subtitle>
         </Title>
         <ArchiveContent />
-        {postType === POST_TYPES.WORKS.slug && <SecondaryNav />}
+        {postType === POST_TYPES.WORKS.slug && isShowing && <SecondaryNav />}
       </main>
     </Provider>
   )
