@@ -8,6 +8,7 @@ import { POST_TYPES } from '../context/constants'
 const Page = () => {
   const { pathname } = useLocation()
   const [, slug] = pathname.split('/')
+
   return (
     <Provider postType={POST_TYPES.PAGES.slug} slug={slug}>
       <Header />

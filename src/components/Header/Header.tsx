@@ -7,18 +7,26 @@ import {
   STYLES_CHECK_BACKGROUND,
 } from 'context/stylesConstants'
 
-const Header = () => {
+interface Props {
+  isHomePage?: boolean
+}
+
+const Header: React.FC<Props> = ({ isHomePage }) => {
   const StyledHeader = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    padding: 0 ${SPACING * 2}rem;
+    padding: ${isHomePage
+      ? `${SPACING * 3}rem ${SPACING * 4}rem`
+      : `0 ${SPACING * 2}rem`};
     z-index: 999;
   `
 
   const SiteTitle = styled.a`
     font-family: ${TITLE_FONT};
-    font-size: 4.5rem;
+    font-size: ${isHomePage ? '9rem' : '4.5rem'};
+    line-height: ${isHomePage ? '0.75' : 'initial'};
+    ${isHomePage && `margin-bottom: ${SPACING}rem; display: block;`}
     ${STYLES_CHECK_BACKGROUND}
   `
 
