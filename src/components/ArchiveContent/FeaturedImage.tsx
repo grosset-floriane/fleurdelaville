@@ -15,7 +15,7 @@ const FeaturedImage = ({ alt, isSingle, src }: Props) => {
     height: ${isSingle ? '75vh' : '100vh'};
   `
 
-  return <Image alt={alt} src={src} className="thumbnails" />
+  return <Image alt={alt} src={src} className="image-background-check" />
 }
 
 export default FeaturedImage

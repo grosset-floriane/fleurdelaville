@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // This interval makes sure the images have loaded 
     // before initialisation of the BackgroundCheck script
     const checkExist = setInterval(function() {
-      const images = document.querySelector('.thumbnails')
+      const images = document.querySelector('.image-background-check')
       if (images) {
          clearInterval(checkExist);
          BackgroundCheck.init({
           targets: '.target',
-          images: '.thumbnails'
+          images: '.image-background-check'
         })
         // To make sure the script refreshes on landing on the page
         BackgroundCheck.refresh()

@@ -8,7 +8,7 @@ export const backgroundCheck = window.BackgroundCheck
 const useBackgroundCheck = () => {
   const [thumbnails, setThumbnails] = useState<null | Element>(null)
 
-  const images = document.querySelector('.thumbnails')
+  const images = document.querySelector('.image-background-check')
 
   const clearThumbnails = () => setThumbnails(null)
   const setThumbnailsState = () => setThumbnails(images)
@@ -17,7 +17,7 @@ const useBackgroundCheck = () => {
     if (thumbnails) {
       backgroundCheck.init({
         targets: '.target',
-        images: '.thumbnails',
+        images: '.image-background-check',
       })
       backgroundCheck.refresh()
     }
