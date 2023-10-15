@@ -40,7 +40,7 @@ const ArticleHeader: React.FC<Props> = ({ imageSrc, title }) => {
     }
 
     ${mq.tablet} {
-      min-height: calc(75vh + ${titleLength > 15 ? '6rem' : '5.5rem'});
+      min-height: calc(75vh + ${titleLength > 15 ? '7rem' : '8.5rem'});
     }
   `
 

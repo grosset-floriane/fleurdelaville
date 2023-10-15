@@ -42,6 +42,17 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
       display: flex;
       gap: ${SPACING}rem;
       flex-direction: column;
+      margin-top: ${SPACING * 3}rem;
+
+      ${mq.tablet} {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: ${SPACING * 3}rem;
+
+        &.columns-2 figure {
+          flex: 45% 1 0;
+        }
+      }
     }
 
     img {

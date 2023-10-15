@@ -61,6 +61,7 @@ const ArchiveContent = () => {
 
     ${mq.tablet} {
       font-size: 4.5rem;
+      bottom: 8rem;
     }
   `
 
