@@ -27,6 +27,12 @@ const Header: React.FC<Props> = ({ isHomePage }) => {
         ? `${SPACING * 4}rem ${SPACING * 7}rem`
         : `0 ${SPACING * 3}rem`};
     }
+
+    ${mq.desktop} {
+      padding: ${isHomePage
+        ? `${SPACING * 6}rem ${SPACING * 9}rem`
+        : `0 ${SPACING * 5}rem`};
+    }
   `
 
   const SiteTitle = styled.a`
@@ -39,6 +45,11 @@ const Header: React.FC<Props> = ({ isHomePage }) => {
     ${mq.tablet} {
       font-size: ${isHomePage ? '15rem' : '8rem'};
       ${isHomePage && `width: 40rem`}
+    }
+
+    ${mq.desktop} {
+      font-size: ${isHomePage ? '20rem' : '10rem'};
+      ${isHomePage && `width: 60rem`}
     }
   `
 

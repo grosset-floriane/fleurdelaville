@@ -30,6 +30,11 @@ const Archive = () => {
       top: 15rem;
       left: ${SPACING * 3}rem;
     }
+
+    ${mq.desktop} {
+      top: 17rem;
+      left: ${SPACING * 5}rem;
+    }
   `
 
   const Subtitle = styled.span`

@@ -13,6 +13,16 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
       padding: ${SPACING * 3}rem;
     }
 
+    ${mq.desktop} {
+      padding: ${SPACING * 3}rem ${SPACING * 5}rem;
+    }
+
+    ${mq.largeDesktop} {
+      padding: ${SPACING * 3}rem ${SPACING * 5}rem;
+      max-width: ${120 + SPACING * 5}rem;
+      margin: auto;
+    }
+
     p {
       line-height: 1.5;
       margin: ${SPACING * 1.5}rem 0;
@@ -20,6 +30,11 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
       ${mq.tablet} {
         font-size: 1.6rem;
         max-width: 60rem;
+      }
+
+      ${mq.tablet} {
+        font-size: 1.8rem;
+        max-width: 70rem;
       }
 
       &:first-of-type {

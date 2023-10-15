@@ -63,6 +63,11 @@ const ArchiveContent = () => {
       font-size: 4.5rem;
       bottom: 8rem;
     }
+
+    ${mq.desktop} {
+      font-size: 5.5rem;
+      bottom: 5rem;
+    }
   `
 
   return (

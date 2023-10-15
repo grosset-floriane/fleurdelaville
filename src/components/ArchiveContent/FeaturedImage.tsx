@@ -13,6 +13,7 @@ const FeaturedImage = ({ alt, isSingle, src }: Props) => {
     object-fit: cover;
     object-position: ${isSingle ? 'left' : 'center'};
     height: ${isSingle ? '75vh' : '100vh'};
+    width: 100%;
   `
 
   return <Image alt={alt} src={src} className="image-background-check" />
