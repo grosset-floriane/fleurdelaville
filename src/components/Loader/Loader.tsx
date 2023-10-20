@@ -1,8 +1,12 @@
 import styled from '@emotion/styled'
-import { BODY_FONT, SPACING } from 'context/stylesConstants'
+import { BODY_FONT, SPACING, mq } from 'context/stylesConstants'
 import React from 'react'
 
-const Loader: React.FC = () => {
+interface Props {
+  isHomePage?: boolean
+}
+
+const Loader: React.FC<Props> = ({ isHomePage }) => {
   const Main = styled.div`
     width: 100%;
     height: 100vh;
@@ -11,6 +15,9 @@ const Loader: React.FC = () => {
     align-items: center;
     justify-content: center;
     gap: ${SPACING * 3}rem;
+    ${mq.desktop} {
+      justify-content: ${isHomePage ? 'flex-end' : 'center'};
+    }
   `
   const Title = styled.h1`
     font-size: 1.8rem;
@@ -18,6 +25,9 @@ const Loader: React.FC = () => {
     font-family: ${BODY_FONT};
     font-weight: normal;
     color: #57360a;
+    ${mq.desktop} {
+      margin-bottom: ${isHomePage ? '5rem' : 'initial'};
+    }
   `
   const Cube = styled.div`
     margin-top: 5rem;

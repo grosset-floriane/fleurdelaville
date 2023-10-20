@@ -11,7 +11,8 @@ const FrontImage: React.FC<Props> = () => {
 
   const backgroundImage = posts[0]?._embedded['wp:featuredmedia'][0].source_url
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <Loader isHomePage />
+
   const Main = styled.main`
     height: 100vh;
     overflow: hidden;
