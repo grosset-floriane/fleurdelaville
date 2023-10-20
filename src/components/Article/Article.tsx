@@ -4,6 +4,7 @@ import { storeContext } from '../../context/storeContext'
 import ArticleHeader from './ArticleHeader'
 import ArticleContent from './ArticleContent'
 import Loader from 'components/Loader/Loader'
+import { Post } from 'types/post'
 
 const Article = () => {
   const { isLoading, posts } = useContext(storeContext) || {}
@@ -11,10 +12,11 @@ const Article = () => {
   if (isLoading) return <Loader />
   if (!posts.length) return null
 
-  return posts.map(({ title, content, slug, _embedded }) => (
+  return posts.map(({ title, content, slug, _embedded, acf }: Post) => (
     <article key={slug}>
       <ArticleHeader
         title={title.rendered}
+        description={acf?.description}
         imageSrc={_embedded['wp:featuredmedia'][0].source_url}
       />
       <ArticleContent content={content.rendered} />

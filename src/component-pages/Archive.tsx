@@ -11,6 +11,7 @@ import {
 } from '../context/stylesConstants'
 import styled from '@emotion/styled'
 import SecondaryNav from 'components/SecondaryNav/SecondaryNav'
+import SEO from 'components/SEO/SEO'
 
 const Archive = () => {
   const { pathname } = useLocation()
@@ -43,14 +44,23 @@ const Archive = () => {
 
   const isShowing = false
 
+  const archiveTitle =
+    postType === POST_TYPES.EXHIBITIONS.slug
+      ? POST_TYPES.EXHIBITIONS.title
+      : POST_TYPES.WORKS.title
+
+  const archiveDescription =
+    postType === POST_TYPES.EXHIBITIONS.slug
+      ? POST_TYPES.EXHIBITIONS.description
+      : POST_TYPES.WORKS.description
+
   return (
     <Provider postType={postType} slug={postType}>
       <Header />
       <main className="Archive">
+        <SEO title={archiveTitle} description={archiveDescription} />
         <Title className="target">
-          {postType === POST_TYPES.EXHIBITIONS.slug
-            ? POST_TYPES.EXHIBITIONS.title
-            : POST_TYPES.WORKS.title}
+          {archiveTitle}
           <br />
           {isShowing && <Subtitle>All</Subtitle>}
         </Title>

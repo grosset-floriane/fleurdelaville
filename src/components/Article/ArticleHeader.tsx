@@ -2,13 +2,15 @@ import React from 'react'
 import FeaturedImage from 'components/ArchiveContent/FeaturedImage'
 import styled from '@emotion/styled'
 import { SPACING, mq } from 'context/stylesConstants'
+import SEO from 'components/SEO/SEO'
 
 interface Props {
   imageSrc: string
   title: string
+  description: string
 }
 
-const ArticleHeader: React.FC<Props> = ({ imageSrc, title }) => {
+const ArticleHeader: React.FC<Props> = ({ imageSrc, title, description }) => {
   const titleLength = title.length
 
   const Title = styled.h1`
@@ -46,6 +48,7 @@ const ArticleHeader: React.FC<Props> = ({ imageSrc, title }) => {
 
   return (
     <Header>
+      <SEO title={title} description={description} />
       <FeaturedImage src={imageSrc} alt={title} isSingle />
       <Title>{title}</Title>
     </Header>

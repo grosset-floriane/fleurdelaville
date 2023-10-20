@@ -7,4 +7,7 @@ export interface Post {
     ['wp:featuredmedia']: { source_url: string }[]
   }
   ['work-types']: number[]
+  acf: {
+    description: string
+  }
 }
