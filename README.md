@@ -51,8 +51,22 @@ more information.
 
 ## To do
 
-- loading
-- SEO meta
-- titles
 - fix issues
+- - header sticky to images (is this feasable?)
+- - Check background weird issues?
+
 - check accessibility
+- - keyboard focus styles
+- - skip to content link
+- - hover styles works/exhibitions
+- - target sizes on mobile / tablet
+
+- UX adjustments
+- - show a part of the next image (except last image)
+- - go back to top link / back to the archive
+- - small footer with nav links (as the nav does not go all the way down)
+
+- prepare to launch
+- - launch page with plugin
+- - remove unused plugins
+- - prepare couple of base artworks / texts
