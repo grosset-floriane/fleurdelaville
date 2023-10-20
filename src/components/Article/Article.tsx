@@ -3,11 +3,13 @@ import { useContext } from 'react'
 import { storeContext } from '../../context/storeContext'
 import ArticleHeader from './ArticleHeader'
 import ArticleContent from './ArticleContent'
+import Loader from 'components/Loader/Loader'
 
 const Article = () => {
-  const posts = useContext(storeContext)
+  const { isLoading, posts } = useContext(storeContext) || {}
 
-  if (!posts) return
+  if (isLoading) return <Loader />
+  if (!posts.length) return null
 
   return posts.map(({ title, content, slug, _embedded }) => (
     <article key={slug}>

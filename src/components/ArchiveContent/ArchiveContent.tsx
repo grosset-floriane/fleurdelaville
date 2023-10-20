@@ -11,9 +11,10 @@ import {
 } from 'context/stylesConstants'
 import { Post } from 'types/post'
 import { backgroundCheck } from 'hooks/useBackgroundCheck'
+import Loader from 'components/Loader/Loader'
 
 const ArchiveContent = () => {
-  const posts = useContext(storeContext)
+  const { isLoading, posts } = useContext(storeContext) || {}
   const [filteredPosts, setFilteredPosts] = useState<Post[] | []>([])
   const [searchParams] = useSearchParams()
   const workType = searchParams.get('work-types')
@@ -28,7 +29,9 @@ const ArchiveContent = () => {
     }
   }, [posts, workType])
 
-  if (!filteredPosts) return null
+  if (isLoading) return <Loader />
+
+  if (!filteredPosts.length) return null
 
   const ArchiveList = styled.ul`
     font-family: sans-serif;

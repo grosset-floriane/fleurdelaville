@@ -4,7 +4,13 @@ import { POST_TYPES, PostTypesSlugs } from './constants'
 import { Post } from 'types/post'
 import useBackgroundCheck from 'hooks/useBackgroundCheck'
 
-export const storeContext = React.createContext<null | Post[]>(null)
+export const storeContext = React.createContext<
+  | {
+      posts: Post[]
+      isLoading: boolean
+    }
+  | {}
+>({})
 export const Consumer = storeContext.Consumer
 
 const BASE_URL = '/wp-json/wp/v2/'
@@ -31,13 +37,25 @@ interface Props {
 export const Provider = ({ children, slug, postType }: Props) => {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [hasLoaded, setHasLoaded] = useState(false)
   const { setThumbnailsState, clearThumbnails, backgroundCheck } =
     useBackgroundCheck()
 
   useEffect(() => {
-    if (!isLoading && slug !== undefined && postType !== undefined) {
+    setPosts([])
+    setHasLoaded(false)
+  }, [slug, postType])
+
+  useEffect(() => {
+    if (
+      !isLoading &&
+      slug !== undefined &&
+      postType !== undefined &&
+      !hasLoaded
+    ) {
       clearThumbnails()
       setIsLoading(true)
+      setHasLoaded(true)
       axios
         .get(`${BASE_URL}${setURL(postType, slug)}`)
         .then((response) => setPosts(response.data))
@@ -48,7 +66,11 @@ export const Provider = ({ children, slug, postType }: Props) => {
         })
     }
     /// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postType, slug])
+  }, [postType, slug, isLoading, hasLoaded])
 
-  return <storeContext.Provider value={posts}>{children}</storeContext.Provider>
+  return (
+    <storeContext.Provider value={{ isLoading, posts }}>
+      {children}
+    </storeContext.Provider>
+  )
 }

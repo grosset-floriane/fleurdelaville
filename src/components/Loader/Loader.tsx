@@ -20,6 +20,7 @@ const Loader: React.FC = () => {
     color: #57360a;
   `
   const Cube = styled.div`
+    margin-top: 5rem;
     font-size: 3.2rem;
     height: 1em;
     width: 1em;

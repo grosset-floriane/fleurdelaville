@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // To test without: does wheel triggered event enough?
     document.addEventListener('scrollend', function () {
-      console.log('scroll')
       BackgroundCheck.refresh()
     })
 

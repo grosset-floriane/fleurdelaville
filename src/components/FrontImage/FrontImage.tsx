@@ -2,16 +2,16 @@ import React, { useContext } from 'react'
 import styled from '@emotion/styled'
 import { storeContext } from '../../context/storeContext'
 import { mq } from 'context/stylesConstants'
+import Loader from 'components/Loader/Loader'
 
 interface Props {}
 
 const FrontImage: React.FC<Props> = () => {
-  const posts = useContext(storeContext) || []
+  const { isLoading, posts } = useContext(storeContext) || {}
 
   const backgroundImage = posts[0]?._embedded['wp:featuredmedia'][0].source_url
 
-  console.log(backgroundImage)
-
+  if (isLoading) return <Loader />
   const Main = styled.main`
     height: 100vh;
     overflow: hidden;
