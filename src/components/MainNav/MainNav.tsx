@@ -13,9 +13,10 @@ const LINKS = [
 
 interface Props {
   isHomePage?: boolean
+  isFooter?: boolean
 }
 
-const MainNav: React.FC<Props> = ({ isHomePage }) => {
+const MainNav: React.FC<Props> = ({ isHomePage, isFooter }) => {
   const NavList = styled.ul`
     display: flex;
     padding: 0;
@@ -25,7 +26,7 @@ const MainNav: React.FC<Props> = ({ isHomePage }) => {
       ${isHomePage && 'justify-content: flex-end;'}
     }
 
-    ${STYLES_CHECK_BACKGROUND}
+    ${!isFooter && STYLES_CHECK_BACKGROUND}
 
     a {
       font-size: 1.4rem;

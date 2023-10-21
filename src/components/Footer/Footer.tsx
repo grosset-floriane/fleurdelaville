@@ -41,7 +41,7 @@ const Footer: React.FC<Props> = ({ isSingle }) => {
         <BackToTop />
       </Container>
       <Divider />
-      <MainNav />
+      <MainNav isFooter />
     </StyledFooter>
   )
 }
