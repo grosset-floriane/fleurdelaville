@@ -62,9 +62,6 @@ more information.
 - - target sizes on mobile / tablet
 
 - UX adjustments
-- - show a part of the next image (except last image)
-- - go back to top link / back to the archive
-- - small footer with nav links (as the nav does not go all the way down)
 
 - prepare to launch
 - - launch page with plugin
