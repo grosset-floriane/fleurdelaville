@@ -5,6 +5,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import FeaturedImage from './FeaturedImage'
 import styled from '@emotion/styled'
 import {
+  SPACING,
   STYLES_CHECK_BACKGROUND,
   TITLE_FONT,
   mq,
@@ -43,11 +44,46 @@ const ArchiveContent = () => {
   `
 
   const ListItem = styled.li`
-    min-width: 100vw;
+    min-width: calc(100vw - ${SPACING * 4}rem);
+    max-width: calc(100vw - ${SPACING * 4}rem);
     height: 100vh;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     text-align: center;
     position: relative;
+
+    ${mq.tablet} {
+      min-width: calc(100vw - ${SPACING * 6}rem);
+      max-width: calc(100vw - ${SPACING * 6}rem);
+    }
+
+    ${mq.desktop} {
+      min-width: calc(100vw - ${SPACING * 10}rem);
+      max-width: calc(100vw - ${SPACING * 10}rem);
+    }
+
+    &:first-child,
+    &:last-child {
+      min-width: calc(100vw - ${SPACING * 2}rem);
+      max-width: calc(100vw - ${SPACING * 2}rem);
+
+      ${mq.tablet} {
+        min-width: calc(100vw - ${SPACING * 3}rem);
+        max-width: calc(100vw - ${SPACING * 3}rem);
+      }
+
+      ${mq.desktop} {
+        min-width: calc(100vw - ${SPACING * 5}rem);
+        max-width: calc(100vw - ${SPACING * 5}rem);
+      }
+    }
+
+    &:first-child {
+      scroll-snap-align: start;
+    }
+
+    &:last-child {
+      scroll-snap-align: end;
+    }
   `
 
   const ItemTitle = styled.h2`
