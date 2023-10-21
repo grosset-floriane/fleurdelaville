@@ -34,19 +34,39 @@ const ArchiveContent = () => {
 
   if (!filteredPosts.length) return null
 
+  const DARK_BROWN = '#57360add'
+  const LIGHT_BROWN = '#c5a172d1'
+
   const ArchiveList = styled.ul`
     font-family: sans-serif;
     scroll-snap-type: x mandatory;
     display: flex;
     -webkit-overflow-scrolling: touch;
     overflow-x: scroll;
-    background-color: #caecf8;
+    overflow-y: hidden;
+    height: calc(100vh);
+
+    ${mq.desktop} {
+      &::-webkit-scrollbar {
+        height: 1.5rem;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: ${LIGHT_BROWN}; /* color of the tracking area */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: ${DARK_BROWN}; /* color of the scroll thumb */
+        border-top: ${LIGHT_BROWN} 2px solid;
+        border-bottom: ${LIGHT_BROWN} 2px solid;
+      }
+    }
   `
 
   const ListItem = styled.li`
     min-width: calc(100vw - ${SPACING * 4}rem);
     max-width: calc(100vw - ${SPACING * 4}rem);
-    height: 100vh;
+    height: calc(100vh - 1.5rem);
     scroll-snap-align: center;
     text-align: center;
     position: relative;
