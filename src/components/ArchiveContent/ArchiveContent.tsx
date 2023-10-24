@@ -34,8 +34,8 @@ const ArchiveContent = () => {
 
   if (!filteredPosts.length) return null
 
-  const DARK_BROWN = '#57360add'
-  const LIGHT_BROWN = '#c5a172d1'
+  const DARK_GREY = '#000000c3'
+  const LIGHT_GREY = '#cecece'
 
   const ArchiveList = styled.ul`
     font-family: sans-serif;
@@ -52,13 +52,14 @@ const ArchiveContent = () => {
       }
 
       &::-webkit-scrollbar-track {
-        background: ${LIGHT_BROWN}; /* color of the tracking area */
+        background: ${LIGHT_GREY}; /* color of the tracking area */
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: ${DARK_BROWN}; /* color of the scroll thumb */
-        border-top: ${LIGHT_BROWN} 2px solid;
-        border-bottom: ${LIGHT_BROWN} 2px solid;
+        background-color: ${DARK_GREY}; /* color of the scroll thumb */
+        border-top: ${LIGHT_GREY} 3px solid;
+        border-bottom: ${LIGHT_GREY} 2px solid;
+        border-radius: 1rem;
       }
     }
   `
