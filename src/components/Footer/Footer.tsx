@@ -5,6 +5,8 @@ import React from 'react'
 import BackToTop from './BackToTop'
 import BackToArchive from './BackToArchive'
 
+const year = new Date().getFullYear()
+
 interface Props {
   isSingle?: boolean
 }
@@ -19,6 +21,8 @@ const Footer: React.FC<Props> = ({ isSingle }) => {
 
     ${mq.desktop} {
       padding: ${SPACING * 5}rem;
+      max-width: ${120 + SPACING * 5}rem;
+      margin: auto;
     }
   `
   const Divider = styled.hr`
@@ -34,6 +38,11 @@ const Footer: React.FC<Props> = ({ isSingle }) => {
     align-items: center;
   `
 
+  const Copyright = styled.p`
+    font-size: 1.2rem;
+    margin-top: ${SPACING * 2}rem;
+  `
+
   return (
     <StyledFooter>
       <Container>
@@ -42,6 +51,12 @@ const Footer: React.FC<Props> = ({ isSingle }) => {
       </Container>
       <Divider />
       <MainNav isFooter />
+      <Copyright>
+        &copy; {year} Fleur Delaville - Webdesign & development:{' '}
+        <a href="https://florianegrosset.com" target="_BLANK">
+          Floriane Grosset
+        </a>
+      </Copyright>
     </StyledFooter>
   )
 }
