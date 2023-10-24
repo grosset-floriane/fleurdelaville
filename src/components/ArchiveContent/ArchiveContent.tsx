@@ -177,7 +177,7 @@ const ArchiveContent = () => {
               <ItemTitle className="target">{title.rendered}</ItemTitle>
               <FeaturedImage
                 src={_embedded['wp:featuredmedia'][0].source_url}
-                alt={title.rendered}
+                alt=""
               />
             </Link>
           </ListItem>
