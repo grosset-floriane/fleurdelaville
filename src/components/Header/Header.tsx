@@ -7,6 +7,7 @@ import {
   STYLES_CHECK_BACKGROUND,
   mq,
 } from 'context/stylesConstants'
+import SkipToContent from './SkipToContent'
 
 interface Props {
   isHomePage?: boolean
@@ -55,6 +56,7 @@ const Header: React.FC<Props> = ({ isHomePage }) => {
 
   return (
     <StyledHeader>
+      {!isHomePage && <SkipToContent />}
       <SiteTitle href="/" className="target">
         Fleur Delaville
       </SiteTitle>

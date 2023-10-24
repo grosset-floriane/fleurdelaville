@@ -57,7 +57,7 @@ const Archive = () => {
   return (
     <Provider postType={postType} slug={postType}>
       <Header />
-      <main className="Archive">
+      <main className="Archive" id="main">
         <SEO title={archiveTitle} description={archiveDescription} />
         <Title className="target">
           {archiveTitle}
