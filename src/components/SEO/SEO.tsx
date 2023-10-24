@@ -9,7 +9,6 @@ interface Props {
 
 const SEO: React.FC<Props> = ({ title, description }) => {
   const { pathname } = useLocation()
-  console.log(description)
 
   return (
     <Helmet>
