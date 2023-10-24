@@ -13,14 +13,18 @@ const Article = () => {
   if (!posts.length) return null
 
   return posts.map(({ title, content, slug, _embedded, acf }: Post) => (
-    <article key={slug}>
+    <div key={slug}>
       <ArticleHeader
         title={title.rendered}
         description={acf?.description}
         imageSrc={_embedded['wp:featuredmedia'][0].source_url}
       />
-      <ArticleContent content={content.rendered} />
-    </article>
+      <main className="Post" id="main">
+        <article>
+          <ArticleContent content={content.rendered} />
+        </article>
+      </main>
+    </div>
   ))
 }
 

@@ -3,6 +3,7 @@ import FeaturedImage from 'components/ArchiveContent/FeaturedImage'
 import styled from '@emotion/styled'
 import { SPACING, mq } from 'context/stylesConstants'
 import SEO from 'components/SEO/SEO'
+import Header from 'components/Header/Header'
 
 interface Props {
   imageSrc: string
@@ -14,24 +15,28 @@ const ArticleHeader: React.FC<Props> = ({ imageSrc, title, description }) => {
   const titleLength = title.length
 
   const Title = styled.h1`
-    position: relative;
+    position: absolute;
     line-height: 1;
     text-align: right;
     padding: 0 ${SPACING * 2}rem;
     font-size: ${titleLength > 15 ? '4rem' : '6rem'};
     font-weight: normal;
     z-index: 2;
+    bottom: -3.5rem;
+    right: 0;
 
     ${mq.tablet} {
       font-size: ${titleLength > 15 ? '10rem' : '12rem'};
       padding: 0 ${SPACING * 3}rem;
+      bottom: -7rem;
+    }
+
+    ${mq.desktop} {
+      right: ${SPACING * 2}rem;
     }
   `
-  const Header = styled.header`
-    min-height: calc(75vh + ${titleLength > 15 ? '2.7rem' : '3.5rem'});
-    display: flex;
-    align-items: end;
-    justify-content: end;
+  const ArticleHeader = styled.div`
+    height: 75vh;
 
     img {
       position: absolute;
@@ -40,18 +45,24 @@ const ArticleHeader: React.FC<Props> = ({ imageSrc, title, description }) => {
       top: 0;
       left: 0;
     }
+  `
 
-    ${mq.tablet} {
-      min-height: calc(75vh + ${titleLength > 15 ? '7rem' : '8.5rem'});
-    }
+  const Container = styled.div`
+    position: relative;
+    height: 75vh;
+    max-width: ${120 + SPACING * 2 * 2}rem;
+    margin: auto;
   `
 
   return (
-    <Header>
-      <SEO title={title} description={description} />
+    <ArticleHeader>
+      <Container>
+        <Header isSingle />
+        <SEO title={title} description={description} />
+        <Title>{title}</Title>
+      </Container>
       <FeaturedImage src={imageSrc} alt={title} isSingle />
-      <Title>{title}</Title>
-    </Header>
+    </ArticleHeader>
   )
 }
 

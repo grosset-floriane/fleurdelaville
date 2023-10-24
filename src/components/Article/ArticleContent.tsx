@@ -7,10 +7,12 @@ interface Props {
 
 const ArticleContent: React.FC<Props> = ({ content }) => {
   const Section = styled.section`
+    margin-top: ${SPACING * 5}rem;
     padding: ${SPACING * 2}rem;
 
     ${mq.tablet} {
       padding: ${SPACING * 3}rem;
+      margin-top: ${SPACING * 8}rem;
     }
 
     ${mq.desktop} {
@@ -21,6 +23,7 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
       padding: ${SPACING * 3}rem ${SPACING * 5}rem;
       max-width: ${120 + SPACING * 5}rem;
       margin: auto;
+      margin-top: ${SPACING * 8}rem;
     }
 
     p {

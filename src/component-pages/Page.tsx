@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../components/Header/Header'
 import { Provider } from '../context/storeContext'
 import { useLocation } from 'react-router-dom'
 import Article from '../components/Article/Article'
@@ -12,7 +11,6 @@ const Page = () => {
 
   return (
     <Provider postType={POST_TYPES.PAGES.slug} slug={slug}>
-      <Header />
       <main className="Post" id="main">
         <Article />
       </main>

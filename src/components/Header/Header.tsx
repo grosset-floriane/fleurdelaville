@@ -11,11 +11,13 @@ import SkipToContent from './SkipToContent'
 
 interface Props {
   isHomePage?: boolean
+  isSingle?: boolean
 }
 
-const Header: React.FC<Props> = ({ isHomePage }) => {
+const Header: React.FC<Props> = ({ isHomePage, isSingle }) => {
   const StyledHeader = styled.header`
-    position: fixed;
+    position: ${isSingle ? 'sticky' : 'fixed'};
+    margin-bottom: ${isSingle ? SPACING * 5 : 0}rem;
     top: 0;
     left: 0;
     padding: ${isHomePage
