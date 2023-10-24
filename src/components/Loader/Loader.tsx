@@ -24,7 +24,7 @@ const Loader: React.FC<Props> = ({ isHomePage }) => {
     text-align: center;
     font-family: ${BODY_FONT};
     font-weight: normal;
-    color: #57360a;
+    color: #000000e2;
     ${mq.desktop} {
       margin-bottom: ${isHomePage ? '5rem' : 'initial'};
     }
@@ -54,8 +54,7 @@ const Loader: React.FC<Props> = ({ isHomePage }) => {
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: #c5a172;
-      border: #523209 2px solid;
+      background-color: #000000e2;
       transform: translatez(0.5em);
       animation: cube-explode 2s infinite ease-in-out;
       opacity: 0.5;
