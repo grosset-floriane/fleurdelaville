@@ -104,6 +104,20 @@ const ArchiveContent = () => {
     &:last-child {
       scroll-snap-align: end;
     }
+    // LINKS STYLES
+    & > a {
+      &:focus-visible {
+        outline: none;
+      }
+
+      &:focus-visible,
+      &:hover {
+        h2::after {
+          height: 0.7rem;
+          transition: height 100ms ease-in-out;
+        }
+      }
+    }
   `
 
   const ItemTitle = styled.h2`
@@ -127,14 +141,33 @@ const ArchiveContent = () => {
       font-size: 5.5rem;
       bottom: 5rem;
     }
+
+    &::after {
+      content: ' ';
+      background-color: black;
+      width: 10rem;
+      height: 0rem;
+      display: block;
+      transition: height 500ms ease-in-out;
+      margin: auto;
+    }
   `
 
+  const onFocus: React.FocusEventHandler<HTMLAnchorElement> = (e) => {
+    const focusedElement = e.target as HTMLElement
+    const offsetLeft = focusedElement.getBoundingClientRect().left
+    const galleryElement = document.getElementById('gallery')
+    if (galleryElement) {
+      galleryElement.scrollBy({ top: 0, left: offsetLeft, behavior: 'smooth' })
+    }
+  }
+
   return (
-    <ArchiveList>
+    <ArchiveList id="gallery">
       {filteredPosts.map(({ title, slug, _embedded, link: postLink }) => {
         return (
           <ListItem key={slug}>
-            <Link to={postLink}>
+            <Link to={postLink} onFocus={onFocus}>
               <ItemTitle className="target">{title.rendered}</ItemTitle>
               <FeaturedImage
                 src={_embedded['wp:featuredmedia'][0].source_url}
