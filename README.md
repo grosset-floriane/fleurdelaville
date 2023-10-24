@@ -52,18 +52,17 @@ more information.
 ## To do
 
 - fix issues
-- - header sticky to images (is this feasable?)
 - - Check background weird issues?
 
 - check accessibility
-- - keyboard focus styles
-- - skip to content link
-- - hover styles works/exhibitions
-- - target sizes on mobile / tablet
 
 - UX adjustments
 
 - prepare to launch
-- - launch page with plugin
-- - remove unused plugins
 - - prepare couple of base artworks / texts
+
+- later
+- - impressum
+- - privacy and policy
+- - add left and right arrows to navigate snapping gallery?:
+    https://snap.glitch.me/carousel.html
