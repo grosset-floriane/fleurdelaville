@@ -42,6 +42,7 @@ const Header: React.FC<Props> = ({ isHomePage, isSingle }) => {
     font-family: ${TITLE_FONT};
     font-size: ${isHomePage ? '9rem' : '4.5rem'};
     line-height: ${isHomePage ? '0.75' : 'initial'};
+    text-decoration: none;
     ${isHomePage && `margin-bottom: ${SPACING}rem; display: block;`}
     ${STYLES_CHECK_BACKGROUND}
 

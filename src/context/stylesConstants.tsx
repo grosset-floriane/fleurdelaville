@@ -8,6 +8,10 @@ export const STYLES_CHECK_BACKGROUND = `
   }
   &.background--dark *, &.background--dark {
     color: #fff;
+
+    &::after {
+      background-color: #fff;
+    }
   }`
 
 const writeMq = (bp: number) => `@media (min-width: ${bp}px)`

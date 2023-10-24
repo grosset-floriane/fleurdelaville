@@ -113,6 +113,7 @@ const ArchiveContent = () => {
 
       &:focus-visible,
       &:hover {
+        color: #000;
         h2::after {
           height: 0.7rem;
           transition: height 100ms ease-in-out;
@@ -151,6 +152,10 @@ const ArchiveContent = () => {
       display: block;
       transition: height 500ms ease-in-out;
       margin: auto;
+
+      ${mq.desktop} {
+        width: 20rem;
+      }
     }
   `
 

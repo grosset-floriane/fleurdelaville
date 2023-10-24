@@ -86,8 +86,22 @@ a:hover,
 a:visited,
 a:active,
 a:focus {
-  text-decoration: none;
   color: black;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus-visible {
+  color: #1e1488;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline-color: #1e1488;
+  border-radius: 3px;
 }
 
 li {

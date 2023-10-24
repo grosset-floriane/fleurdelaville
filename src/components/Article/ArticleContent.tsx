@@ -49,13 +49,6 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
       }
     }
 
-    a {
-      text-decoration: underline;
-      &:hover {
-        color: #710505;
-      }
-    }
-
     .wp-block-gallery {
       display: flex;
       gap: ${SPACING}rem;

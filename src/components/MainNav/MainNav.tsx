@@ -30,6 +30,7 @@ const MainNav: React.FC<Props> = ({ isHomePage, isFooter }) => {
 
     a {
       font-size: 1.4rem;
+      text-decoration: none;
       &.active {
         text-decoration: underline;
       }
