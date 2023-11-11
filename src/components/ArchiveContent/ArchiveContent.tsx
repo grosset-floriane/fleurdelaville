@@ -170,11 +170,17 @@ const ArchiveContent = () => {
 
   return (
     <ArchiveList id="gallery">
-      {filteredPosts.map(({ title, slug, _embedded, link: postLink }) => {
+      {filteredPosts.map(({ title, slug, _embedded, link: postLink, acf }) => {
         return (
           <ListItem key={slug}>
             <Link to={postLink} onFocus={onFocus}>
-              <ItemTitle className="target">{title.rendered}</ItemTitle>
+              <ItemTitle
+                className={`background--${
+                  acf?.title_color === 'white' ? 'dark' : 'light'
+                }`}
+              >
+                {title.rendered}
+              </ItemTitle>
               <FeaturedImage
                 src={_embedded['wp:featuredmedia'][0].source_url}
                 alt=""

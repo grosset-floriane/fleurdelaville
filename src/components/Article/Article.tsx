@@ -18,6 +18,7 @@ const Article = () => {
         title={title.rendered}
         description={acf?.description}
         imageSrc={_embedded['wp:featuredmedia'][0].source_url}
+        titleColor={acf?.title_color}
       />
       <main className="Post" id="main">
         <article>

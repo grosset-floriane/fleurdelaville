@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 
 export const backgroundCheck = window.BackgroundCheck
 
-const useBackgroundCheck = () => {
+const useBackgroundCheck = ({ isSingle }: { isSingle: boolean }) => {
   const [thumbnails, setThumbnails] = useState<null | Element>(null)
 
   const images = document.querySelector('.image-background-check')
@@ -14,7 +14,7 @@ const useBackgroundCheck = () => {
   const setThumbnailsState = () => setThumbnails(images)
 
   useEffect(() => {
-    if (thumbnails) {
+    if (thumbnails && !isSingle) {
       backgroundCheck.init({
         targets: '.target',
         images: '.image-background-check',

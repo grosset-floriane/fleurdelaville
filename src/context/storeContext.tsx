@@ -38,8 +38,9 @@ export const Provider = ({ children, slug, postType }: Props) => {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [hasLoaded, setHasLoaded] = useState(false)
+  const isSingle = slug !== postType
   const { setThumbnailsState, clearThumbnails, backgroundCheck } =
-    useBackgroundCheck()
+    useBackgroundCheck({ isSingle })
 
   useEffect(() => {
     setPosts([])
@@ -61,8 +62,10 @@ export const Provider = ({ children, slug, postType }: Props) => {
         .then((response) => setPosts(response.data))
         .finally(() => {
           setIsLoading(false)
-          backgroundCheck.refresh()
-          setThumbnailsState()
+          if (!isSingle) {
+            backgroundCheck.refresh()
+            setThumbnailsState()
+          }
         })
     }
     /// eslint-disable-next-line react-hooks/exhaustive-deps

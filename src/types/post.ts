@@ -9,5 +9,6 @@ export interface Post {
   ['work-types']: number[]
   acf: {
     description: string
+    title_color: string
   }
 }

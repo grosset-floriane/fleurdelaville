@@ -14,9 +14,10 @@ const LINKS = [
 interface Props {
   isHomePage?: boolean
   isFooter?: boolean
+  className?: string
 }
 
-const MainNav: React.FC<Props> = ({ isHomePage, isFooter }) => {
+const MainNav: React.FC<Props> = ({ isHomePage, isFooter, className }) => {
   const NavList = styled.ul`
     display: flex;
     padding: 0;
@@ -42,7 +43,7 @@ const MainNav: React.FC<Props> = ({ isHomePage, isFooter }) => {
   `
   return (
     <nav>
-      <NavList className="target">
+      <NavList className={className}>
         {LINKS.map(({ link, label }) => (
           <li key={link}>
             <NavLink

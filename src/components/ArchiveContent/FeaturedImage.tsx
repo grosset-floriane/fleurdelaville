@@ -16,7 +16,13 @@ const FeaturedImage = ({ alt, isSingle, src }: Props) => {
     width: 100%;
   `
 
-  return <Image alt={alt} src={src} className="image-background-check" />
+  return (
+    <Image
+      alt={alt}
+      src={src}
+      className={isSingle ? '' : 'image-background-check'}
+    />
+  )
 }
 
 export default FeaturedImage

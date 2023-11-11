@@ -9,9 +9,15 @@ interface Props {
   imageSrc: string
   title: string
   description: string
+  title_color: string
 }
 
-const ArticleHeader: React.FC<Props> = ({ imageSrc, title, description }) => {
+const ArticleHeader: React.FC<Props> = ({
+  imageSrc,
+  title,
+  description,
+  titleColor,
+}) => {
   const titleLength = title.length
 
   const Title = styled.h1`
@@ -57,7 +63,7 @@ const ArticleHeader: React.FC<Props> = ({ imageSrc, title, description }) => {
   return (
     <ArticleHeader>
       <Container>
-        <Header isSingle />
+        <Header isSingle titleColor={titleColor} />
         <SEO title={title} description={description} />
         <Title>{title}</Title>
       </Container>

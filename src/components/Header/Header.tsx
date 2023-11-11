@@ -12,9 +12,10 @@ import SkipToContent from './SkipToContent'
 interface Props {
   isHomePage?: boolean
   isSingle?: boolean
+  titleColor?: string
 }
 
-const Header: React.FC<Props> = ({ isHomePage, isSingle }) => {
+const Header: React.FC<Props> = ({ isHomePage, isSingle, titleColor }) => {
   const StyledHeader = styled.header`
     position: ${isSingle ? 'sticky' : 'fixed'};
     margin-bottom: ${isSingle ? SPACING * 5 : 0}rem;
@@ -57,13 +58,17 @@ const Header: React.FC<Props> = ({ isHomePage, isSingle }) => {
     }
   `
 
+  const className = isSingle
+    ? `background--${titleColor === 'white' ? 'dark' : 'light'}`
+    : 'target'
+
   return (
     <StyledHeader>
       {!isHomePage && <SkipToContent />}
-      <SiteTitle href="/" className="target">
+      <SiteTitle href="/" className={className}>
         Fleur Delaville
       </SiteTitle>
-      <MainNav isHomePage={isHomePage} />
+      <MainNav isHomePage={isHomePage} className={className} />
     </StyledHeader>
   )
 }
