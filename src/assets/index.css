@@ -131,6 +131,43 @@ li {
   }
 }
 
+hr.wp-block-separator,
+hr.wp-block-separator::before,
+hr.wp-block-separator::after {
+  content: ' ';
+  background-color: white;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  display: block;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin: auto;
+  overflow: visible;
+}
+hr.wp-block-separator::before,
+hr.wp-block-separator::after {
+  height: 7px;
+  width: 7px;
+}
+
+hr.wp-block-separator::before {
+  position: relative;
+  left: -24px;
+  top: 1px;
+  display: block;
+  margin: 0;
+}
+
+hr.wp-block-separator::after {
+  position: relative;
+  left: 24px;
+  top: -6px;
+  display: block;
+  margin: 0;
+}
+
 .wp-block-embed__wrapper iframe {
   width: 100%;
   height: calc((100vw - 16px * 2) * 9 / 16);
