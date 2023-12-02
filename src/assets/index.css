@@ -148,3 +148,7 @@ li {
     height: calc(1160px * 9 / 16);
   }
 }
+
+img {
+  width: 100%;
+}
