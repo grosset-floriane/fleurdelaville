@@ -5,14 +5,14 @@ import styled from '@emotion/styled'
 interface Props {
   src: string
   alt: string
-  isSingle?: boolean
+  imagePosition?: string
 }
 
-const FeaturedImage = ({ alt, isSingle, src }: Props) => {
+const FeaturedImage = ({ alt, imagePosition, src }: Props) => {
   const Image = styled.img`
     object-fit: cover;
-    object-position: ${isSingle ? 'left' : 'center'};
-    height: ${isSingle ? '75vh' : '100vh'};
+    object-position: ${imagePosition ? imagePosition : 'center'};
+    height: ${imagePosition ? '75vh' : '100vh'};
     width: 100%;
   `
 
@@ -20,7 +20,7 @@ const FeaturedImage = ({ alt, isSingle, src }: Props) => {
     <Image
       alt={alt}
       src={src}
-      className={isSingle ? '' : 'image-background-check'}
+      className={imagePosition ? '' : 'image-background-check'}
     />
   )
 }

@@ -10,6 +10,7 @@ interface Props {
   title: string
   description: string
   title_color: string
+  imagePosition: string
 }
 
 const ArticleHeader: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const ArticleHeader: React.FC<Props> = ({
   title,
   description,
   titleColor,
+  imagePosition,
 }) => {
   const titleLength = title.length
 
@@ -67,7 +69,7 @@ const ArticleHeader: React.FC<Props> = ({
         <SEO title={title} description={description} />
         <Title>{title}</Title>
       </Container>
-      <FeaturedImage src={imageSrc} alt={title} isSingle />
+      <FeaturedImage src={imageSrc} alt={title} imagePosition={imagePosition} />
     </ArticleHeader>
   )
 }
