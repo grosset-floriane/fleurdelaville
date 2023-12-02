@@ -31,11 +31,10 @@ const ArticleContent: React.FC<Props> = ({ content }) => {
       margin: ${SPACING * 1.5}rem 0;
 
       ${mq.tablet} {
-        font-size: 1.6rem;
         max-width: 60rem;
       }
 
-      ${mq.tablet} {
+      ${mq.desktop} {
         font-size: 1.8rem;
         max-width: 70rem;
       }

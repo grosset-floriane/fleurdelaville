@@ -30,7 +30,8 @@ const MainNav: React.FC<Props> = ({ isHomePage, isFooter, className }) => {
     ${!isFooter && STYLES_CHECK_BACKGROUND}
 
     a {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
+      padding: ${SPACING}rem 0;
       text-decoration: none;
       &.active {
         text-decoration: underline;
