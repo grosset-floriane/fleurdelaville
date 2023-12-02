@@ -19,7 +19,7 @@ const setURL = (postType: PostTypesSlugs, slug: string): string => {
   switch (postType) {
     case POST_TYPES.EXHIBITIONS.slug:
     case POST_TYPES.WORKS.slug:
-      if (slug === postType) return `${slug}?_embed`
+      if (slug === postType) return `${slug}?_embed&per_page=100`
       return `${postType}?slug=${slug}&_embed`
     case POST_TYPES.PAGES.slug:
       return `pages?slug=${slug}&_embed`
