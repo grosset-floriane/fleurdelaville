@@ -10,5 +10,6 @@ export interface Post {
   acf: {
     description: string
     title_color: string
+    mobile_vertical: string
   }
 }

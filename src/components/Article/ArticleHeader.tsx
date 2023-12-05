@@ -1,5 +1,5 @@
 import React from 'react'
-import FeaturedImage from 'components/ArchiveContent/FeaturedImage'
+import FeaturedImage from 'components/Article/FeaturedImage'
 import styled from '@emotion/styled'
 import { SPACING, mq } from 'context/stylesConstants'
 import SEO from 'components/SEO/SEO'
@@ -9,7 +9,7 @@ interface Props {
   imageSrc: string
   title: string
   description: string
-  title_color: string
+  titleColor?: string
   imagePosition: string
 }
 
