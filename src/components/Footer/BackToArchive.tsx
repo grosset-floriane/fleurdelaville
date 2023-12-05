@@ -7,7 +7,7 @@ interface Props {}
 
 const BackToArchive: React.FC<Props> = () => {
   const { pathname } = useLocation()
-  const [, postType] = pathname.split('/')
+  const [, postType, slug] = pathname.split('/')
 
   const Arrow = styled.span`
     position: relative;
@@ -16,7 +16,7 @@ const BackToArchive: React.FC<Props> = () => {
     margin-right: ${SPACING / 2}rem;
   `
   return (
-    <a href={`/${postType}`}>
+    <a href={`/${postType}/#${slug}`}>
       <Arrow>&#8592;</Arrow> Back to all {postType}
     </a>
   )
