@@ -2,7 +2,6 @@ import React, { ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { POST_TYPES, PostTypesSlugs } from './constants'
 import { Post } from 'types/post'
-import useBackgroundCheck from 'hooks/useBackgroundCheck'
 
 export const storeContext = React.createContext<
   | {
@@ -38,9 +37,6 @@ export const Provider = ({ children, slug, postType }: Props) => {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [hasLoaded, setHasLoaded] = useState(false)
-  const isSingle = slug !== postType
-  const { setThumbnailsState, clearThumbnails, backgroundCheck } =
-    useBackgroundCheck({ isSingle })
 
   useEffect(() => {
     setPosts([])
@@ -54,7 +50,6 @@ export const Provider = ({ children, slug, postType }: Props) => {
       postType !== undefined &&
       !hasLoaded
     ) {
-      clearThumbnails()
       setIsLoading(true)
       setHasLoaded(true)
       axios
@@ -62,10 +57,6 @@ export const Provider = ({ children, slug, postType }: Props) => {
         .then((response) => setPosts(response.data))
         .finally(() => {
           setIsLoading(false)
-          if (!isSingle) {
-            backgroundCheck.refresh()
-            setThumbnailsState()
-          }
         })
     }
     /// eslint-disable-next-line react-hooks/exhaustive-deps

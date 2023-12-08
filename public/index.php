@@ -37,8 +37,6 @@
         work correctly both with client-side routing and a non-root public URL.
         Learn how to configure a non-root public URL by running `npm run wpbuild`.
     -->
-    <script src="%PUBLIC_URL%/react-src/src/assets/scripts/background-check.min.js"></script>
-    <script src="%PUBLIC_URL%/react-src/src/assets/scripts/main.js"></script>
     <title>Fleur Delaville, artist & box maker</title>
 
     <meta property="og:site_name" content="Fleur Delaville" />
