@@ -11,7 +11,7 @@ const FeaturedImage = ({ alt, imagePosition, src }: Props) => {
   const Image = styled.img`
     object-fit: cover;
     object-position: ${imagePosition ? imagePosition : 'center'};
-    height: ${imagePosition ? '75vh' : '100vh'};
+    height: 75vh;
     width: 100%;
   `
 
