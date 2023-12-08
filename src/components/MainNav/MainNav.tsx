@@ -3,13 +3,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { SPACING, STYLES_CHECK_BACKGROUND, mq } from 'context/stylesConstants'
 import { LinkState } from 'types/links'
-
-const LINKS = [
-  { link: '/works', label: 'Works' },
-  { link: '/exhibitions', label: 'Exhibitions' },
-  { link: '/contact', label: 'Contact' },
-  { link: '/about', label: 'About' },
-]
+import { MENU_LINKS } from 'context/constants'
 
 interface Props {
   isHomePage?: boolean
@@ -45,7 +39,7 @@ const MainNav: React.FC<Props> = ({ isHomePage, isFooter, className }) => {
   return (
     <nav>
       <NavList className={className}>
-        {LINKS.map(({ link, label }) => (
+        {MENU_LINKS.map(({ link, label }) => (
           <li key={link}>
             <NavLink
               to={link}

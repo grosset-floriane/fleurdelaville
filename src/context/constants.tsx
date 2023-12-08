@@ -18,3 +18,10 @@ export const POST_TYPES: {
       'Selection of exhibitions featuring works made by Fleur Delaville',
   },
 }
+
+export const MENU_LINKS = [
+  { link: '/works', label: 'Works' },
+  { link: '/exhibitions', label: 'Exhibitions' },
+  { link: '/contact', label: 'Contact' },
+  { link: '/about', label: 'About' },
+]

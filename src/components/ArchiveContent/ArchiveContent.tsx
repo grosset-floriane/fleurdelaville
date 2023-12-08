@@ -4,7 +4,7 @@ import { POST_TYPES } from '../../context/constants'
 import { SPACING, mq } from '../../context/stylesConstants'
 import styled from '@emotion/styled'
 import SEO from 'components/SEO/SEO'
-import MobileHeader from 'components/ArchiveHeader/ArchiveHeader'
+import ArchiveHeader from 'components/ArchiveHeader/ArchiveHeader'
 import { useContext } from 'react'
 import { storeContext } from '../../context/storeContext'
 import ArchiveNav from 'components/ArchiveNav/ArchiveNav'
@@ -144,8 +144,8 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
 
   return (
     <>
-      <MobileHeader titleColor={titleColor} />
-      {posts && (
+      <ArchiveHeader
+      />
         <>
           <ArchiveNav
             titleColor={titleColor}
