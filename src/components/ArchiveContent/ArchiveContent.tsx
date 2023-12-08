@@ -10,14 +10,22 @@ import { storeContext } from '../../context/storeContext'
 import ArchiveNav from 'components/ArchiveNav/ArchiveNav'
 import useKeyShortcuts from 'hooks/useKeyShortcuts'
 import { Post } from 'types/post'
+import GridView from './GridView'
+import { ViewType } from 'types/viewType'
 
 interface Props {
   postType: string
 }
 
+const { scroll: SCROLL, grid: GRID }: { scroll: ViewType; grid: ViewType } = {
+  scroll: 'scroll',
+  grid: 'grid',
+}
+
 const ArchiveContent: React.FC<Props> = ({ postType }) => {
   const { posts } = useContext(storeContext)
   const [postShown, setPostShown] = useState<null | Post>(null)
+  const [listViewType, setListViewType] = useState<ViewType>(SCROLL)
   const [index, setIndex] = useState(0)
   const titleColor = postShown?.acf.title_color
   const { hash } = useLocation()
@@ -78,8 +86,24 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
     window.history.replaceState(null, '', `#${slug}`)
   }
 
+  const removeHashInUrl = () => {
+    window.history.replaceState(null, '', `/${postType}`)
+  }
+
   useEffect(() => {
-    if (posts.length) {
+    const storageViewType: string | null = localStorage.getItem('listViewType')
+    if ([SCROLL, GRID].some((type: ViewType) => storageViewType === type)) {
+      setListViewType(storageViewType as ViewType)
+      if (storageViewType === GRID) {
+        removeHashInUrl()
+      }
+    } else {
+      localStorage.setItem('listViewType', SCROLL)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (posts.length && listViewType === SCROLL) {
       let selectedId = 0
       if (hash) {
         const id = posts.findIndex(
@@ -91,7 +115,7 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
       setHashInUrl(selectedId)
       setIndex(selectedId)
     }
-  }, [posts])
+  }, [posts, listViewType])
 
   const addClassNameOnHover = useCallback(() => {
     const titleLink = document.getElementsByClassName('work-title')
@@ -141,11 +165,23 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
   const image = isMobile ? imageMobile || imageTablet : imageTablet
 
   useKeyShortcuts({ goToNext, goToPrevious })
+  const toggleListViewType = () => {
+    if (listViewType === SCROLL) removeHashInUrl()
+    localStorage.setItem(
+      'listViewType',
+      listViewType === SCROLL ? GRID : SCROLL,
+    )
+    setListViewType(listViewType === SCROLL ? GRID : SCROLL)
+  }
 
   return (
     <>
       <ArchiveHeader
+        titleColor={listViewType === SCROLL ? titleColor : 'black'}
+        toggleListViewType={toggleListViewType}
+        listViewType={listViewType}
       />
+      {posts && listViewType === SCROLL && (
         <>
           <ArchiveNav
             titleColor={titleColor}
@@ -168,6 +204,11 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
             </a>
           </Main>
         </>
+      )}
+      {posts && listViewType === GRID && (
+        <Main id="main" className="Archive">
+          <GridView posts={posts} />
+        </Main>
       )}
     </>
   )
