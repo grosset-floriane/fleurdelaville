@@ -95,8 +95,7 @@ a {
 
 a:hover,
 a:focus-visible {
-  color: #1e1488;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:focus-visible {
