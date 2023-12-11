@@ -27,9 +27,24 @@ const ArchiveHeader: React.FC<Props> = ({
     font-size: 4.5rem;
     line-height: initial;
     text-decoration: none;
+    position: relative;
 
     ${mq.tablet} {
       font-size: 7rem;
+    }
+
+    ${mq.desktop} {
+      &.grid::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: ${SPACING * 2}rem;
+        left: 0;
+        width: 33rem;
+        height: 4rem;
+        background-color: #ffffffb3;
+        z-index: -1;
+      }
     }
 
     &,
@@ -48,7 +63,7 @@ const ArchiveHeader: React.FC<Props> = ({
     left: 0;
     width: 100%;
     z-index: 9999;
-    ${listViewType === 'grid' && 'background-color: #ffffffb3;'}
+
     ${isOpen &&
     'background-image: url("/wp-content/themes/fleurdelaville-react2/react-src/src/assets/images/menu-image-mobile.jpg"); height: 100vh;'}
 
@@ -59,6 +74,7 @@ const ArchiveHeader: React.FC<Props> = ({
     }
 
     ${mq.desktop} {
+      ${listViewType === 'grid' && 'background-color: transparent'}
       padding: ${SPACING}rem ${SPACING * 6}rem;
       ${isOpen &&
       'background-image: url("/wp-content/themes/fleurdelaville-react2/react-src/src/assets/images/menu-image-desktop.jpg");'}
@@ -77,6 +93,21 @@ const ArchiveHeader: React.FC<Props> = ({
     margin-right: -${SPACING}rem;
     cursor: pointer;
     transition: ease-in 500ms transform;
+    position: relative;
+
+    ${mq.desktop} {
+      &.grid::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: ${SPACING * 2}rem;
+        left: 0;
+        width: 8.5rem;
+        height: 4rem;
+        background-color: #ffffffb3;
+        z-index: -1;
+      }
+    }
 
     &:hover {
       transform: rotate(10deg);
@@ -88,11 +119,14 @@ const ArchiveHeader: React.FC<Props> = ({
     <>
       <Header>
         <FlexContainer>
-          <SiteTitle href="/">Fleur Delaville</SiteTitle>
+          <SiteTitle href="/" className={!isOpen ? listViewType : ''}>
+            Fleur Delaville
+          </SiteTitle>
           <MenuButton
             onClick={onClick}
             aria-label={`${isOpen ? 'Close' : 'Open'} menu`}
             aria-controls="main-navigation"
+            className={!isOpen ? listViewType : ''}
           >
             <MenuIcon titleColor={isOpen ? 'black' : titleColor} />
           </MenuButton>
