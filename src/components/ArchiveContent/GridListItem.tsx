@@ -16,16 +16,16 @@ const GridListItem: React.FC<Props> = ({
   titleColor,
 }) => {
   const ListItem = styled.li`
-    width: 100vw;
+    width: 100%;
     aspect-ratio: 4/3;
     position: relative;
 
     ${mq.tablet} {
-      width: 50vw;
+      width: 50%;
     }
 
     ${mq.desktop} {
-      width: calc(100vw / 3);
+      width: calc(100% / 3);
     }
   `
   const Link = styled.a`
