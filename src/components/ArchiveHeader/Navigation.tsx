@@ -44,7 +44,9 @@ const Navigation: React.FC<Props> = ({
         text-align: left;
       }
 
-      &.active {
+      &.active,
+      &:focus-visible,
+      &:hover {
         text-decoration: underline;
       }
     }
@@ -62,13 +64,19 @@ const Navigation: React.FC<Props> = ({
     border: none;
     padding: 0;
     text-decoration: underline;
+    cursor: pointer;
   `
+
+  const switchListViewAndClose = () => {
+    toggleListViewType()
+    onClick()
+  }
 
   return (
     <Nav id="main-nav" aria-expanded={isOpen}>
       <SwitchContainer>
         <p>View type: {listViewType}</p>
-        <SwitchButton onClick={toggleListViewType}>
+        <SwitchButton onClick={switchListViewAndClose}>
           switch to {listViewType === 'scroll' ? 'Grid' : 'Scroll'}
         </SwitchButton>
       </SwitchContainer>
