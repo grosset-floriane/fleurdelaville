@@ -51,18 +51,27 @@ more information.
 
 ## To do
 
-- fix issues
-- - Check background weird issues?
+- General
 
 - check accessibility
+- - accessibility menu icon and pop up
+- - when updating image after going forward or backward, the focus is lost and
+    start from the beginning
 
 - UX adjustments
 
-- prepare to launch
-- - prepare couple of base artworks / texts
-
 - later
+- - similar work at the bottom of work
+- - trap control in menu when open
 - - impressum
 - - privacy and policy
-- - add left and right arrows to navigate snapping gallery?:
-    https://snap.glitch.me/carousel.html
+- - functionality to organise by year of creation
+- - pagination and animation of the work and exhibitions archive pages
+- - improve performance of loading images
+- - custom fields for date, materials, location, dimentions
+- - add possibility to filter by type of work
+- - add gif ligne claire object qui tourne dans le menu
+- - add swiping movement on phone to scroll object on archive page
+- - add animation in between objects on archive page
+- - scroll back to project in view
+- - grid view back to top button
