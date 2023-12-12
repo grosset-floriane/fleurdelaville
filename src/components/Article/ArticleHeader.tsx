@@ -23,20 +23,19 @@ const ArticleHeader: React.FC<Props> = ({
   const titleLength = title.length
 
   const Title = styled.h1`
-    position: absolute;
+    position: relative;
     line-height: 1;
     text-align: right;
     padding: 0 ${SPACING * 2}rem;
-    font-size: ${titleLength > 15 ? '4rem' : '6rem'};
+    font-size: ${titleLength > 18 ? '4rem' : '6rem'};
     font-weight: normal;
     z-index: 2;
-    bottom: -3.5rem;
-    right: 0;
+    top: -${SPACING * 2}rem;
 
     ${mq.tablet} {
-      font-size: ${titleLength > 15 ? '10rem' : '12rem'};
+      font-size: ${titleLength > 18 ? '9rem' : '12rem'};
       padding: 0 ${SPACING * 3}rem;
-      bottom: -7rem;
+      top: -${SPACING * 3}rem;
     }
 
     ${mq.desktop} {
@@ -44,7 +43,15 @@ const ArticleHeader: React.FC<Props> = ({
     }
   `
   const ArticleHeader = styled.div`
-    height: 75vh;
+    height: 80vh;
+
+    ${mq.tablet} {
+      height: ${titleLength > 18 ? '85vh' : '80vh'};
+    }
+
+    ${mq.desktop} {
+      height: 78vh;
+    }
 
     img {
       position: absolute;
@@ -67,9 +74,9 @@ const ArticleHeader: React.FC<Props> = ({
       <Container>
         <Header isSingle titleColor={titleColor} />
         <SEO title={title} description={description} />
-        <Title>{title}</Title>
       </Container>
       <FeaturedImage src={imageSrc} alt={title} imagePosition={imagePosition} />
+      <Title>{title}</Title>
     </ArticleHeader>
   )
 }
