@@ -1,14 +1,13 @@
-import React from 'react'
-import Header from 'components/Header/Header'
-import { Provider } from '../context/storeContext'
-import FrontImage from 'components/FrontImage/FrontImage'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
-  return (
-    <Provider postType="pages" slug="home">
-      <Header isHomePage />
-      <FrontImage />
-    </Provider>
-  )
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    navigate('/works')
+  }, [navigate])
+
+  return null
 }
 export default HomePage

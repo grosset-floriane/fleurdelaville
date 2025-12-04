@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { POST_TYPES } from '../../context/constants'
 import { SPACING, mq } from '../../context/stylesConstants'
 import styled from '@emotion/styled'
@@ -23,10 +23,12 @@ const { scroll: SCROLL, grid: GRID }: { scroll: ViewType; grid: ViewType } = {
 }
 
 const ArchiveContent: React.FC<Props> = ({ postType }) => {
-  const { posts } = useContext(storeContext)
+  const { posts, categories } = useContext(storeContext)
+  console.log(categories)
   const [postShown, setPostShown] = useState<null | Post>(null)
   const [listViewType, setListViewType] = useState<ViewType>(SCROLL)
   const [index, setIndex] = useState(0)
+  const [category, setCategory] = useState('all')
   const titleColor = postShown?.acf.title_color
   const { hash } = useLocation()
   const offsetWidth = Math.max(
@@ -36,22 +38,19 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
   const isMobile = offsetWidth < Number(mq.tablet)
 
   const Title = styled.h1`
-    position: fixed;
-    top: 6rem;
-    left: ${SPACING * 2}rem;
-    font-size: 3.4rem;
+    margin-top: 11rem;
+    margin-left: ${SPACING * 2}rem;
+    font-size: 9.6rem;
     font-weight: normal;
-    z-index: 999;
-    line-height: 0.75;
     color: ${titleColor};
     ${mq.tablet} {
-      font-size: 5rem;
+      font-size: 12rem;
       top: 10rem;
       left: ${SPACING * 3}rem;
     }
 
     ${mq.desktop} {
-      top: 10rem;
+      top: 14rem;
       left: ${SPACING * 6}rem;
     }
   `
@@ -98,13 +97,14 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
         removeHashInUrl()
       }
     } else {
-      localStorage.setItem('listViewType', SCROLL)
+      localStorage.setItem('listViewType', GRID)
     }
   }, [])
 
   useEffect(() => {
     if (posts.length && listViewType === SCROLL) {
       let selectedId = 0
+      console.log('hash', hash)
       if (hash) {
         const id = posts.findIndex(
           ({ slug }: { slug: string }) => slug === hash.substring(1),
@@ -181,32 +181,42 @@ const ArchiveContent: React.FC<Props> = ({ postType }) => {
         toggleListViewType={toggleListViewType}
         listViewType={listViewType}
       />
-      {posts && listViewType === SCROLL && (
-        <>
-          <ArchiveNav
-            titleColor={titleColor}
-            goToPrevious={goToPrevious}
-            goToNext={goToNext}
-            title={postShown?.title.rendered}
-            isFirstItem={index === 0}
-            isLastItem={index === posts.length - 1}
-            link={postLink}
-          />
-          <Main className="Archive" id="main">
-            <SEO title={archiveTitle} description={archiveDescription} />
-            <Title className="target">
-              {archiveTitle}
-              <br />
-              {isShowing && <Subtitle>All</Subtitle>}
-            </Title>
-            <a href={postLink} id="work-link" tabIndex={-1}>
-              <img src={image} alt={postShown?.title.rendered} />
-            </a>
-          </Main>
-        </>
-      )}
-      {posts && listViewType === GRID && (
+
+      {posts && (
         <Main id="main" className="Archive">
+          <Title>Works</Title>
+          {categories.length > 0 && (
+            <ul
+              style={{
+                padding: `${SPACING * 2}rem`,
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '1.6rem',
+                justifyContent: 'flex-end',
+              }}
+            >
+              <li>
+                <Link
+                  to={`/works`}
+                  style={{ padding: '8px 0', textDecoration: 'none' }}
+                >
+                  All
+                </Link>
+              </li>
+              {categories.map(
+                ({ name, slug }: { name: string; slug: string }) => (
+                  <li>
+                    <Link
+                      to={`?filter=${slug}`}
+                      style={{ padding: '8px 0', textDecoration: 'none' }}
+                    >
+                      {name}
+                    </Link>
+                  </li>
+                ),
+              )}
+            </ul>
+          )}
           <GridView posts={posts} />
         </Main>
       )}

@@ -27,6 +27,8 @@ const setURL = (postType: PostTypesSlugs, slug: string): string => {
   }
 }
 
+const setCategoriesURL = `work-types`
+
 interface Props {
   children: ReactNode
   slug?: string
@@ -35,6 +37,7 @@ interface Props {
 
 export const Provider = ({ children, slug, postType }: Props) => {
   const [posts, setPosts] = useState([])
+  const [categories, setCategories] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [hasLoaded, setHasLoaded] = useState(false)
 
@@ -58,12 +61,19 @@ export const Provider = ({ children, slug, postType }: Props) => {
         .finally(() => {
           setIsLoading(false)
         })
+
+      if (postType === 'works') {
+        axios
+          .get(`${BASE_URL}${setCategoriesURL}`)
+          .then((response) => setCategories(response.data))
+      }
     }
+
     /// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postType, slug, isLoading, hasLoaded])
 
   return (
-    <storeContext.Provider value={{ isLoading, posts }}>
+    <storeContext.Provider value={{ isLoading, posts, categories }}>
       {children}
     </storeContext.Provider>
   )

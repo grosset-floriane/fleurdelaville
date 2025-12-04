@@ -1,4 +1,5 @@
 {
   "finalBuildPath": null,
-  "homepage": "/wp-content/themes/fleurdelaville-react2"
+  "homepage": "/wp-content/themes/fleurdelaville",
+  "browserLaunchTo": "https://fleurdelaville.net"
 }
